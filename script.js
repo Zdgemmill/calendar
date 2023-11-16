@@ -1,7 +1,21 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var timeBox = $(".time-block");
+var textArea = $("textarea");
+var saveButton = $("button");
+var hourBox = $(".hour");
+var headline = $("#currentDay");
+var currentTime = dayjs().format("MMM DD, YYYY h:m:s a")
+console.log(currentTime);
+console.log(timeBox);
+
+var currentHour = dayjs(hourBox.text())
+console.log(currentHour)
+
 $(function () {
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
