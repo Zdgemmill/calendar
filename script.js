@@ -12,7 +12,7 @@ $(headline).text(currentTime);
 // When the page loads this will change the text area colors byt selecting an id that starts with hour-
 $(document).ready(function () {
   $('[id^="hour-"]').each(function () {
-    var hour = parseInt($(this).attr("id").split("-")[1]); // Extract hour from ID
+    var hour = parseInt($(this).attr("id").split("-")[1]);
     var currentHour = dayjs().hour();
     var textarea = $(this).find("textarea");
 
@@ -26,24 +26,24 @@ $(document).ready(function () {
   });
 });
 
-// var data = {
-//   hourItem: $(textArea.val()),
-//   time: $('[id^="hour-"]'.val())
+var dayList = {
+  9: $(textArea.val()),
 
-// };
-for (let i = 0; i < saveButton.length; i++) {
-  $(saveButton[i]).on('click', function () {
-    var data = {
-      hourItem: $(textArea.val()),
-      time: $(timeBox.val())
+};
+$(saveButton).click(function () {
+  // find text area based off of button sibling
+  var task = $(this).siblings(".description").val()
+  var timeBlock = $(this).parent().attr("id")
+  localStorage.setItem(timeBlock, task);
+  //find id off of parent div
+});
 
-    };
-    console.log(data)
-
-  });
-
+for (let i = 9; i < 18; i++) {
+  $("#hour-" + i + " .description").val(localStorage.getItem("hour-" + i))
 
 }
+
+
 
 
 // TODO: Add a listener for click events on the save button. This code should
